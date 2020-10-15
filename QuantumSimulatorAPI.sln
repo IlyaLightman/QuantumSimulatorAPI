@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumSimulatorAPI", "QuantumSimulatorAPI.csproj", "{DED13679-2C5A-4B86-BCD6-42548AC9611E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DED13679-2C5A-4B86-BCD6-42548AC9611E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED13679-2C5A-4B86-BCD6-42548AC9611E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED13679-2C5A-4B86-BCD6-42548AC9611E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED13679-2C5A-4B86-BCD6-42548AC9611E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {399B381E-3228-488F-BBAC-8A41F7D149D7}
+	EndGlobalSection
+EndGlobal
