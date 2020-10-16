@@ -27,8 +27,17 @@ namespace QuantumSimulatorAPI.Controllers
         public IEnumerable<QuantumSimulatorModel> Get()
         {
             var qs = new QuantumSimulatorModel { };
-            qs.QuantumTest();
 
+            var instructions = new string[]
+            {
+                "SET(q1,One)", "SET(q2,Zero)", "SET(q3,Zero)", "H(q3)",
+                "CNOT(q3,q2)", "CNOT(q1,q2)", "H(q1)", "IFM(q2,One)",
+                "X(q3)", "IFM(q1,One)", "Z(q3)"
+            };
+
+            var (operations, parameters) = DataPreparer.QSInstructionsToParams(instructions);
+
+            qs.QuantumCalculating(3, 1, operations, parameters);
 
             return Enumerable.Range(1, 5).Select(index => new QuantumSimulatorModel
             {
