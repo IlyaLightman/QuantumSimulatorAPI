@@ -11,22 +11,10 @@ namespace QuantumSimulatorAPI.Controllers
     [Route("[controller]")]
     public class QuantumSimulatorController : ControllerBase
     {
-        //private static readonly string[] Summaries = new[]
-        //{
-        //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        //};
-
-        //private readonly ILogger<QuantumSimulatorController> _logger;
-
-        //public QuantumSimulatorController(ILogger<QuantumSimulatorController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        [HttpGet]
-        public IEnumerable<QuantumSimulatorModel> Get()
+        [HttpGet()]
+        public ActionResult<int[]> GetResult()
         {
-            var qs = new QuantumSimulatorModel { };
+            Console.WriteLine("Get request");
 
             var instructions = new string[]
             {
@@ -37,15 +25,12 @@ namespace QuantumSimulatorAPI.Controllers
 
             var (operations, parameters) = DataPreparer.QSInstructionsToParams(instructions);
 
-            qs.QuantumCalculating(3, 1, operations, parameters);
+            Console.WriteLine($"{string.Join(' ', operations)} {string.Join(' ', parameters)}");
 
-            return Enumerable.Range(1, 5).Select(index => new QuantumSimulatorModel
-            {
-                //Date = DateTime.Now.AddDays(index),
-                //TemperatureC = rng.Next(-20, 55),
-                //Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var qs = new QuantumSimulatorOps();
+            // Console.WriteLine(qs.QuantumCalculating(3, 1, operations, parameters));
+
+            return new ObjectResult(qs.QuantumCalculating(3, 1000, operations, parameters));
         }
     }
 }

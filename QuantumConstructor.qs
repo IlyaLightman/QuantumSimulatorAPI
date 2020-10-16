@@ -11,44 +11,44 @@
             X(q1);     
 		}
 
-        Message("Set Function used");
+        // Message("Set Function used");
 	}
 
     // Special None Operations
 
     operation none (q : Qubit) : Unit {
-        Message("None Operation was called");
+        // Message("None Operation was called");
 	}
 
     operation doubleNone (qubits : (Qubit, Qubit)) : Unit {
-        Message("Double None Operation was called");
+        // Message("Double None Operation was called");
 	}
 
     // Decorated Gates
 
     operation _H (q : Qubit) : Unit {
         H(q);
-        Message("H Gate Used");
+        // Message("H Gate Used");
 	}
 
     operation _X (q : Qubit) : Unit {
         X(q);
-        Message("X Gate Used");
+        // Message("X Gate Used");
 	}
 
     operation _Y (q : Qubit) : Unit {
         Y(q);
-        Message("Y Gate Used");
+        // Message("Y Gate Used");
 	}
 
     operation _Z (q : Qubit) : Unit {
         Z(q);
-        Message("Z Gate Used");
+        // Message("Z Gate Used");
 	}
 
     operation _CNOT (qubits : (Qubit, Qubit)) : Unit {
         CNOT(qubits);
-        Message("CNOT Gate Used");
+        // Message("CNOT Gate Used");
 	}
 
     // Operation with one Qubit
