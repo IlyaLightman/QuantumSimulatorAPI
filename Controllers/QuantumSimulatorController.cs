@@ -16,25 +16,32 @@ namespace QuantumSimulatorAPI.Controllers
         [HttpPost()]
         public ActionResult<int[]> CalculateResult([FromBody] object data)
         {
-            // Console.WriteLine(data.ToString());
-
-            // QSForDeserialize deserializedData = JsonSerializer.Deserialize<QSForDeserialize>($"{data}");
-            QSForDeserialize deserializedData = JsonConvert.DeserializeObject<QSForDeserialize>($"{data}");
-
-            Console.WriteLine($"Post calculate request. Qubits: {deserializedData.Qubits}, Repeats: {deserializedData.Repeats}, Instructions: {string.Join(',', deserializedData.Instructions)}");
-
-            var TestInstructions = new string[]
+            try
             {
-                "SET(q1,One)", "SET(q2,Zero)", "SET(q3,Zero)", "H(q3)",
-                "CNOT(q3,q2)", "CNOT(q1,q2)", "H(q1)", "IFM(q2,One)",
-                "X(q3)", "IFM(q1,One)", "Z(q3)"
-            };
+                // Console.WriteLine(data.ToString());
 
-            var (operations, parameters) = DataPreparer.QSInstructionsToParams(deserializedData.Instructions);
+                // QSForDeserialize deserializedData = JsonSerializer.Deserialize<QSForDeserialize>($"{data}");
+                QSForDeserialize deserializedData = JsonConvert.DeserializeObject<QSForDeserialize>($"{data}");
 
-            var qs = new QuantumSimulatorOps();
+                Console.WriteLine($"Post calculate request. Qubits: {deserializedData.Qubits}, Repeats: {deserializedData.Repeats}, Instructions: {string.Join(',', deserializedData.Instructions)}");
 
-            return new ObjectResult(qs.QuantumCalculating(deserializedData.Qubits, deserializedData.Repeats, operations, parameters));
+                //var TestInstructions = new string[]
+                //{
+                //    "SET(q1,One)", "SET(q2,Zero)", "SET(q3,Zero)", "H(q3)",
+                //    "CNOT(q3,q2)", "CNOT(q1,q2)", "H(q1)", "IFM(q2,One)",
+                //    "X(q3)", "IFM(q1,One)", "Z(q3)"
+                //};
+
+                var (operations, parameters) = DataPreparer.QSInstructionsToParams(deserializedData.Instructions);
+
+                var qs = new QuantumSimulatorOps();
+
+                return new ObjectResult(qs.QuantumCalculating(deserializedData.Qubits, deserializedData.Repeats, operations, parameters));
+            }
+            catch
+            {
+                return new ObjectResult("Invalid Input");
+            }
         }
     }
 

@@ -98,10 +98,18 @@ namespace QuantumSimulatorAPI
 
             var sim = new QuantumSimulator();
 
-            var returnedArray = Constructor.Run(sim, qubits, repeats, oprs, prms)
-                .Result.Select(x => (int)x).ToArray();
+            try
+            {
+                var returnedArray = Constructor.Run(sim, qubits, repeats, oprs, prms)
+                    .Result.Select(x => (int)x).ToArray();
 
-            return returnedArray;
+                return returnedArray;
+            } catch
+            {
+                return new int[0];
+            }
+
+            
         }
     }
 }

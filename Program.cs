@@ -13,6 +13,7 @@ namespace QuantumSimulatorAPI
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("I am alive");
             CreateHostBuilder(args).Build().Run();
         }
 
